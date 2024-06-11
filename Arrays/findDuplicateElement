@@ -1,0 +1,40 @@
+class findDuplicateElement{
+   static int usingFloydCycleDectectionAlgo(int[] nums){ 
+        int start = nums[0];
+        int end = nums[0];
+
+        do{
+          start = nums[start]; // move one step
+          end =nums[nums[end]; // move two step;
+        }while(start != end)
+
+
+        start =nums[0]; 
+        while(start !=end){
+            start = nums[start];
+            end = nums[end];
+        }
+      return end;
+   }
+
+    static int findDublicateNumber(int[] nums){
+         HashSet<Integer> has = new HashSet<>();
+         int dublicate = -1;
+        
+         for(int i=0; i<nums.length; i++){
+             if(has.contains(nums[i])){
+                 dublicate =nums[i];
+                 break;
+             }
+             has.add(nums[i]);
+         }
+         
+         return dublicate;
+    }
+
+    public static void main(String[] args) {
+        int[] nums ={2, 3, 4, 1, 2};
+        System.out.print(usingFloydCycleDectectionAlgo(nums));
+      
+    }
+}
