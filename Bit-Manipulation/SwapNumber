@@ -1,0 +1,25 @@
+public class BitManipulation {
+     Static void swapUsingXOR(int[] num){
+        int firstNumber = num[0];
+        int secondNumber = num[1];
+
+        // Step 1: firstNumber becomes firstNumber XOR secondNumber
+        firstNumber = firstNumber ^ secondNumber;
+
+        // Step 2: secondNumber becomes firstNumber XOR secondNumber (which is the original value of firstNumber)
+        secondNumber = firstNumber ^ secondNumber;
+
+        // Step 3: firstNumber becomes firstNumber XOR secondNumber (which is the original value of secondNumber)
+        firstNumber = firstNumber ^ secondNumber;
+
+//update the array by swap value;
+     num[0] = firstNumber;
+     num[1] = secondNumber;
+     }
+public static void main(String[] args) {
+        int[] nums = {3, 5};
+        System.out.println("Before swapping: a = " + nums[0] + ", b = " + nums[1]);
+        swapUsingXOR(nums);
+        System.out.println("After swapping: a = " + nums[0] + ", b = " + nums[1]);
+    }
+}
