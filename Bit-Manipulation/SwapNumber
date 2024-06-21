@@ -1,5 +1,5 @@
 public class BitManipulation {
-     Static void swapUsingXOR(int[] num){
+     static void swapUsingXOR(int[] num){
         int firstNumber = num[0];
         int secondNumber = num[1];
 
