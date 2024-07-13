@@ -8,7 +8,7 @@ class findDuplicateElement{
           end =nums[nums[end]; // move two step;
         }while(start != end)
 
-
+// Reset tortoise/fast/start to the start and move both pointers one step at a time to find the cycle's entrance, which corresponds to the duplicate number.
         start =nums[0]; 
         while(start !=end){
             start = nums[start];
