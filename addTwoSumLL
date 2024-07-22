@@ -1,0 +1,88 @@
+
+pulic ListNode addTwoSumLL(ListNode l1, ListNode l2){
+ListNode dummy = new ListNode(0);
+ListNode current = dummy;
+int carry =0;
+
+while(l1 != null || l2 != null || carry != 0){
+    int sum =carry;
+    if(l1 !=null){
+    sum +=l1.val;
+    l1 = l1.next;
+    }
+    if(l2 != null){
+      sum += l2.val;
+      l2= l2.next;
+    }
+
+     carry = sum /10;
+     current.next = new ListNode(sum%10);
+     current = current.next;
+
+}
+return dummy.next;
+}
+
+
+
+
+
+Sure, let's break down these steps:
+
+Step-by-Step Explanation
+Context
+At each iteration of the while loop, we have calculated the sum of the current digits from the two input linked lists (l1 and l2), along with any carry from the previous iteration.
+
+Step 1: Update the Carry
+java
+Copy code
+carry = sum / 10;
+Purpose: To determine the carry-over for the next iteration.
+How It Works:
+When sum is 10 or more, there is a carry-over to the next higher place value.
+The carry is calculated as sum / 10. For example, if sum is 18, carry will be 18 / 10, which is 1.
+If sum is less than 10, carry will be 0 because there is no carry-over.
+Step 2: Create a New Node with the Current Digit
+java
+Copy code
+current.next = new ListNode(sum % 10);
+Purpose: To add the digit of the current place value to the result linked list.
+How It Works:
+The digit to be stored in the current node of the result list is the remainder of sum when divided by 10, which is sum % 10.
+For example, if sum is 18, the digit to be added to the current node is 18 % 10, which is 8.
+A new node is created with this digit (sum % 10) and is added to the result list by setting current.next to this new node.
+Step 3: Move the Current Pointer
+java
+Copy code
+current = current.next;
+Purpose: To move the current pointer to the newly added node so that the next digit can be added in the next iteration.
+How It Works:
+By moving current to current.next, we are effectively advancing the pointer to the end of the result list, where the next new node will be added in the next iteration.
+Example Walkthrough
+Let's walk through an example where l1 = [2, 4, 3] and l2 = [5, 6, 4]:
+
+Initialization:
+
+carry = 0
+dummy and current both point to a dummy node with value 0.
+First Iteration:
+
+sum = 2 (from l1) + 5 (from l2) + 0 (carry) = 7
+carry = 7 / 10 = 0
+current.next = new ListNode(7 % 10) = new ListNode(7)
+Move current to current.next (the new node with value 7).
+Second Iteration:
+
+sum = 4 (from l1) + 6 (from l2) + 0 (carry) = 10
+carry = 10 / 10 = 1
+current.next = new ListNode(10 % 10) = new ListNode(0)
+Move current to current.next (the new node with value 0).
+Third Iteration:
+
+sum = 3 (from l1) + 4 (from l2) + 1 (carry) = 8
+carry = 8 / 10 = 0
+current.next = new ListNode(8 % 10) = new ListNode(8)
+Move current to current.next (the new node with value 8).
+Final Result:
+
+The resulting linked list is [7, 0, 8], which represents the number 807 (the sum of 342 and 465).
